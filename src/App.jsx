@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 
 const App = () => {
+    const purple = '#8e44ad';
+    const [bg , setbg] = useState(purple);
+    const [name, setName] = useState('Click');
 
-    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const bgColorChange = () => {
+        setbg('#34495e');
+        setName('Clicked');
+    }
 
-    const UpdateTime = () => {
-        setTime(new Date().toLocaleTimeString())
-    } 
-
-    setInterval(UpdateTime,1000);
-    return (
+    const bgdbl = () => {
+        setbg(purple);
+        setName('double');
+    }
+    return(
         <>
-            <div className="card">
-                <h1> {time} </h1>
+            <div className="card" style={{backgroundColor: bg}}>
+                <button onClick={bgColorChange} onDoubleClick={bgdbl}> {name} </button>
+                <button onMouseEnter={bgColorChange} onMouseLeave={bgdbl}> {name} </button>
             </div>
         </>
     )
